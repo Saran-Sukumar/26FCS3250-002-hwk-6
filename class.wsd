@@ -1,3 +1,46 @@
 @startuml design
+skinparam classAttributeIconSize 0
+
+' ============================
+' CLASSES
+' ============================
+
+class Flight {
+    - airlineCode : String
+    - flightNumber : String
+}
+
+class Aircraft {
+    - prefix : String
+    - registrationNumber : String
+    - manufacturer : String
+    - model : String
+    - capacity : Integer
+}
+
+class Airport {
+    - iataCode : String
+    - city : String
+    - state : String
+    - country : String
+}
+
+class Connection {
+    - date : Date
+    - time : Time
+}
+
+' ============================
+' RELATIONSHIPS
+' ============================
+
+' A flight uses ONE aircraft
+Flight --> Aircraft : operates >
+
+' A flight has MANY connections
+Flight --> Connection : has >
+
+' A connection links to ONE airport
+Connection --> Airport : arrives/departs >
 
 @enduml

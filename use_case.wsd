@@ -1,10 +1,40 @@
-@startuml
+@startuml Design
+left to right direction
 skinparam packageStyle rectangle
 
-left to right direction
+actor Company
+actor Candidate
+actor HiringCommittee as Committee
+actor System
 
 package "Hiring Process" {
 
+    usecase "Create Job Description" as UC1
+    usecase "Generate Shareable Link" as UC2
+    usecase "Submit Application\n+ Upload Documents" as UC3
+    usecase "Evaluate Candidates" as UC4
+    usecase "Reject Unqualified Candidates" as UC5
+    usecase "Send Automatic Rejection Emails" as UC6
+    usecase "Interview Qualified Candidates" as UC7
+    usecase "Make Hiring Decision" as UC8
+    usecase "Generate Analytical Reports" as UC9
 }
+
+' ============================
+' ACTOR → USE CASE LINKS
+' ============================
+
+Company --> UC1
+Company --> UC2
+
+Candidate --> UC3
+
+Committee --> UC4
+Committee --> UC5
+System --> UC6
+Committee --> UC7
+Committee --> UC8
+
+System --> UC9
 
 @enduml
